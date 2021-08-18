@@ -115,21 +115,21 @@ def dft(z):
 
 #open original image
 image = np.array(Image.open("seahorse.jpg"))
-plt.figure(figsize = (12, 8))
-plt.title("Original")
-plt.imshow(image)
+#plt.figure(figsize = (12, 8))
+#plt.title("Original")
+#plt.imshow(image)
 
 #convert rgb to gray so it can be used with sobel operator
 gray_im = rgb2gray(image)
-plt.figure(figsize = (12, 8))
-plt.title("Gray")
-plt.imshow(gray_im, cmap=plt.cm.gray)
+#plt.figure(figsize = (12, 8))
+#plt.title("Gray")
+#plt.imshow(gray_im, cmap=plt.cm.gray)
 
 #use sobel operator for edge detection
 sobel_im = filters.sobel(gray_im)
-plt.figure(figsize = (12, 8))
-plt.title("Sobel")
-plt.imshow(sobel_im, cmap=plt.cm.gray)
+#plt.figure(figsize = (12, 8))
+#plt.title("Sobel")
+#plt.imshow(sobel_im, cmap=plt.cm.gray)
 
 #get points on edge
 points=[]
@@ -139,10 +139,10 @@ y=[]
 for i in points:
     x.append(i[0])
     y.append(i[1])
-plt.figure(figsize = (12, 8))
-plt.scatter(x,y)
-plt.title("Points")
-plt.show()
+#plt.figure(figsize = (12, 8))
+#plt.scatter(x,y)
+#plt.title("Points")
+#plt.show()
 
 #center image at (0,0), also flip image to compensate for indexing convention
 x_center = np.average(x)
@@ -153,24 +153,24 @@ for a in x:
     x0.append(a-x_center)
 for b in y:
     y0.append(y_center-b)
-plt.figure(figsize = (12, 8))
-plt.scatter(x0,y0)
-plt.title("Centered_Points")
-plt.show()
+#plt.figure(figsize = (12, 8))
+#plt.scatter(x0,y0)
+#plt.title("Centered_Points")
+#plt.show()
 
 #remove points that are too close to eachother
 prune_points(x0,y0)
-plt.figure(figsize = (12, 8))
-plt.scatter(x0,y0)
-plt.title("Pruned_Points")
-plt.show()
+#plt.figure(figsize = (12, 8))
+#plt.scatter(x0,y0)
+#plt.title("Pruned_Points")
+#plt.show()
 
 #approximate tour through all points
 order_points(x0,y0)
-plt.figure(figsize = (12, 8))
-plt.plot(x0,y0,marker="o")
-plt.title("Ordered_Points")
-plt.show()
+#plt.figure(figsize = (12, 8))
+#plt.plot(x0,y0,marker="o")
+#plt.title("Ordered_Points")
+#plt.show()
 
 #put points on complex plane and take the dft to find fourier coefficients
 z_seq = to_complex(x0,y0)
